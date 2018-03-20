@@ -1,32 +1,36 @@
+package DAO;
 
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
+import Entity.User;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 /**
  * Created by kodexx on 3/15/18.
  */
 
-@RequestScoped
-@Named("jpa")
-public class HibernateCrud implements CRUD {
-    private static EntityManager entityManager = null;
+@Stateless(mappedName = "jpa")
+public class JpaCrud {
 
-    public HibernateCrud() {
+    /*private static EntityManager entityManager = null;
+
+    public JpaCrud() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("UserPU");
         if (entityManager == null){
             entityManager = emf.createEntityManager();
         }
-    }
+    }*/
+
+
+    @PersistenceContext(unitName = "UserPU")
+    private EntityManager entityManager;
 
     public boolean addUser(User user) {
         try{
-            entityManager.getTransaction().begin();
+            //entityManager.getTransaction().begin();
             entityManager.persist(user);
-            entityManager.getTransaction().commit();
+           // entityManager.getTransaction().commit();
         } catch (Exception ex){
             System.out.println("The following exception occured");
             System.out.println(ex);

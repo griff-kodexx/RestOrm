@@ -1,3 +1,5 @@
+package Entity;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -43,7 +45,7 @@ public class User {
 
     /*@Override
     public boolean equals(Object obj) {
-        User user = (User) obj;
+        Entity.User user = (Entity.User) obj;
 
         return this.getId() == user.getId() && this.getPassword() == user.getPassword()
                 && this.getName() == user.getName();

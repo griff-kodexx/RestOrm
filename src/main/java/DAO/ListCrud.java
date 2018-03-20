@@ -1,13 +1,14 @@
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
+package DAO;
+
+import Entity.User;
+import javax.ejb.Stateless;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by kodexx on 3/14/18.
  */
-@RequestScoped
-@Named("list")
+@Stateless(mappedName = "list")
 public class ListCrud implements CRUD {
 
     static List<User> userList = new ArrayList<User>();
@@ -42,14 +43,14 @@ public class ListCrud implements CRUD {
             }
         }
 
-       /* User userToUpdate = getById(user.getId());
+       /* Entity.User userToUpdate = getById(user.getId());
         userToUpdate = user;
         delete(user);
         userList.add(userToUpdate);*/
 
        return userList.contains(user);
 
-        /*for (User k:userList) {
+        /*for (Entity.User k:userList) {
             if (k==user){
                 return true;
             }
